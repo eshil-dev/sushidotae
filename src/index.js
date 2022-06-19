@@ -16,6 +16,11 @@ import FAQ from './components/pages/faq';
 import Franchies from './components/pages/franchies';
 import Refund from './components/pages/refund_policy';
 import TermsAndConditions from './components/pages/terms_conditions'
+import Order from './components/order';
+import OTP from './components/OTP';
+import Location from './components/locate_me';
+import OrderSummary from './components/order_summary';
+
 
 import {BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -37,6 +42,10 @@ root.render(
           <Route path='/refund' element={<Refund/>}></Route>
           <Route path='/terms-and-conditions' element={<TermsAndConditions/>}></Route>
           <Route path='/cookies' element={<Cookies/>}></Route>
+          <Route path='/order' element={<Order></Order>}></Route>
+          <Route path='/otp' element={<OTP></OTP>}></Route>
+          <Route path='/locate-me' element={<Location></Location>}></Route>
+          <Route path='/order-summary' element={<OrderSummary></OrderSummary>}></Route>
           <Route path='*' element={< PageNotFound/>}/>
         </Route>
       </Routes>
