@@ -1,6 +1,6 @@
 import React from  'react';
 
-class Consumer_rights extends React.Component{
+class ConsumerRights extends React.Component{
     constructor(props){
         super(props);
     }
@@ -14,4 +14,4 @@ class Consumer_rights extends React.Component{
     }
 }
 
-export default Consumer_rights;
+export default ConsumerRights;

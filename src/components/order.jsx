@@ -1,14 +1,56 @@
 import React from "react";
 import ae from './ae.svg';
+import axios from "axios";
+import OTP from './OTP';
+
 
 class Order extends React.Component{
     constructor(props){
         super(props);
+        this.state = {
+            number: '', 
+            auth_code:Math.floor(Math.random() * (9999 - 0 + 1) + 0),
+            sms_sent: false,
+            valid_number : false
+        };
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    handleChange(event) {
+        if(event.target.value.length == 10){
+            this.setState({valid_number: true})
+            this.setState({number: event.target.value});
+            console.log(this.state.number)
+        }else{
+
+        }
+        
+    }
+    
+    handleSubmit(event) {
+   
+    const sms_global_password = 'uVh9zc5Z'
+    const sms_global_user = '1bfz48ju'
+    const baseURL = `https://api.smsglobal.com/http-api.php?action=sendsms&user=${sms_global_user}&password=${sms_global_password}&from=Pizza.ae&to=971${this.state.number}&text=Your%20code%20is%20${this.state.auth_code}`
+    
+    axios({
+        method: 'get',
+        url: baseURL,
+    }).then((response) =>{
+        (response.data.startsWith('OK') ? this.setState({sms_sent:true}): console.log(response));
+    });
+
+    event.preventDefault();
+    }
+
+      
     render(){
-        return (
-            <div className="container p-3 py-4">
+        if(this.state.sms_sent === true){
+            return <OTP auth_code = {this.state.auth_code} number = {this.state.number}></OTP>
+        }else{
+            return (
+                <div className="container p-3 py-4">
                     <div className="row mt-3">
                         <div className="col-sm-12 col-md-3"></div>
                         <div className="col-sm-12 col-md-6 text-center">
@@ -24,37 +66,41 @@ class Order extends React.Component{
                                 </thead>
                                 <tbody>
                                     <tr className=""> 
-                                        <td><i class="bi-trash3 h4"></i> </td>
+                                        <td><i className="bi-trash3 h4"></i> </td>
                                         <td>SUSHI</td>
                                         <td>
-                                            <div class="">
-                                                <span class="mx-2">-</span>
+                                            <div className="">
+                                                <span className="mx-2">-</span>
                                                 <span>5</span>
-                                                <span class="mx-2" >+</span>
+                                                <span className="mx-2" >+</span>
                                             </div>
                                         </td>
                                         <td>67.00 AED</td>
                                     </tr>
                                 </tbody>
                             </table>
-                            <form className="text-center">
+                            <form className="text-center" onSubmit={this.handleSubmit}>
                                 <div className="input-group col-sm-6 my-3">
                                     <span className="input-group-text rounded-0 " id="basic-addon1">
                                         <img src={ae} height="30" alt=""/>
                                     </span>
-                                    <input type="tel" className="form-control rounded-0" placeholder="05--------"/>
+                                    <input type="text" 
+                                    onChange={this.handleChange}
+                                    className="form-control rounded-0" 
+                                    maxLength='10'
+                                    placeholder="05--------"/>
                                 </div>
                                 <div className="row px-2">
-                                    <a  href="/otp" className="btn btn-lg rounded-0 btn-success">Validate Me</a>
+                                    <button disabled={!this.state.valid_number} className="btn btn-lg rounded-0 btn-success">Validate Me</button>
+                                    {/* <Link className="btn btn-lg rounded-0 btn-success" to='/otp'>validate me</Link> */}
                                 </div>
                             </form>
-                        
                         </div>
                         <div className="col-sm-12 col-md-3"></div>
                     </div>
-            </div>
-        
-        )
+                </div>
+            )
+        }
     }
 }
 

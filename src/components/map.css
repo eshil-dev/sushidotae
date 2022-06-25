@@ -1,0 +1,37 @@
+.map{
+    display: block;
+    height: 40em;
+    width: 100%;
+    background-color: bisque;
+}
+
+.card_border_color{border-color: #FF5400}
+.bg{background-color: #FF5400}
+.text_color{color: #FF5400}
+
+.bg:hover{
+    background-color: #FF5400;
+}
+.flex_style {flex-direction: row;}  
+
+.text_on_line{
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid #FF5400;
+    line-height: 0.1em;
+    margin: 20px 0 30px;
+}
+.text_on_line_span { 
+     background-color:#FFF;
+     padding:0 10px;
+     color: #FF5400,
+ }
+
+ .increase{
+    border: none;
+    border-radius: 0;
+    margin: 0;
+    padding: 5px 10px;
+    color: #FF5400;
+    font-weight: bolder;
+ }
