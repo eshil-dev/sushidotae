@@ -4,8 +4,9 @@ import {useState,useRef, useMemo} from 'react';
 
 
 export default function MapTest(){
+    console.log(process.env.REACT_APP_NEXT_PUBLIC_GOOGLE_MAP_API_KEY)
     const { isLoaded } = useLoadScript({ 
-        googleMapsApiKey: 'AIzaSyAua8DSSTJuQlSM-eKdwQISs6sk_n_TXIw',
+        googleMapsApiKey: process.env.REACT_APP_NEXT_PUBLIC_GOOGLE_MAP_API_KEY,
         libraries:['places'],
     })
     if (!isLoaded) return <h1>still loading...</h1>

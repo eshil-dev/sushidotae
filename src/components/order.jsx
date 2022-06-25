@@ -3,7 +3,6 @@ import ae from './ae.svg';
 import axios from "axios";
 import OTP from './OTP';
 
-
 class Order extends React.Component{
     constructor(props){
         super(props);
@@ -18,7 +17,7 @@ class Order extends React.Component{
     }
 
     handleChange(event) {
-        if(event.target.value.length == 10){
+        if(event.target.value.length == 9){
             this.setState({valid_number: true})
             this.setState({number: event.target.value});
             console.log(this.state.number)
@@ -29,10 +28,14 @@ class Order extends React.Component{
     }
     
     handleSubmit(event) {
-   
-    const sms_global_password = 'uVh9zc5Z'
-    const sms_global_user = '1bfz48ju'
-    const baseURL = `https://api.smsglobal.com/http-api.php?action=sendsms&user=${sms_global_user}&password=${sms_global_password}&from=Pizza.ae&to=971${this.state.number}&text=Your%20code%20is%20${this.state.auth_code}`
+        const sms_global_password = process.env.REACT_APP_SMS_GLOBAL_PASSWORD
+        const sms_global_user = process.env.REACT_APP_SMS_GLOBAL_USER
+        console.log("pass ", sms_global_password)
+        console.log("user: ", sms_global_user)
+        // const number = this.sta
+        console.log("number: ", this.state.number)
+        
+        const baseURL = `https://api.smsglobal.com/http-api.php?action=sendsms&user=${sms_global_user}&password=${sms_global_password}&from=Pizza.ae&to=971${this.state.number}&text=Your%20code%20is%20${this.state.auth_code}`
     
     axios({
         method: 'get',
@@ -46,6 +49,7 @@ class Order extends React.Component{
 
       
     render(){
+       console.log(process.env.REACT_APP_SMS_GLOBAL_USER)
         if(this.state.sms_sent === true){
             return <OTP auth_code = {this.state.auth_code} number = {this.state.number}></OTP>
         }else{
@@ -87,8 +91,8 @@ class Order extends React.Component{
                                     <input type="text" 
                                     onChange={this.handleChange}
                                     className="form-control rounded-0" 
-                                    maxLength='10'
-                                    placeholder="05--------"/>
+                                    maxLength='9'
+                                    placeholder="5 --------"/>
                                 </div>
                                 <div className="row px-2">
                                     <button disabled={!this.state.valid_number} className="btn btn-lg rounded-0 btn-success">Validate Me</button>

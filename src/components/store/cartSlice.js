@@ -24,11 +24,11 @@ export const cartSlice = createSlice({
 
     decreaseItem: (state, action) => {
       // find the index of the item and decreament the qty
-      const index = state.cart.findIndex(ele => ele.id == action.payload.id);
+      const index = state.cart.findIndex(ele => ele.id === action.payload.id);
       let new_qty = state.cart[index].qty;
       // check if the qty of the item is 1, decrement should remove it from store
       new_qty = new_qty-1
-      if(new_qty == 0){
+      if(new_qty === 0){
         // get all the items from cart store except this this.
         const filteredState = state.cart.filter(i => i.id !== action.payload.id)
         state.cart = [...filteredState]
@@ -44,7 +44,7 @@ export const cartSlice = createSlice({
 
     increaseItem: (state, action) => {
       // find the index of the item and decreament the qty
-      const index = state.cart.findIndex(ele => ele.id == action.payload.id);
+      const index = state.cart.findIndex(ele => ele.id === action.payload.id);
       let new_qty = state.cart[index].qty;
       new_qty = new_qty+1
       // otherwise, increment the qty of the item.
