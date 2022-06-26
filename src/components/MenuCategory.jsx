@@ -1,6 +1,6 @@
 import React from 'react';
 import MenuItems from './menuItem';
-import './map.css';
+import './style.css';
 
 function MenuCategory(props){
     const {category} = props;

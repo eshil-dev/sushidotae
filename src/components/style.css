@@ -35,3 +35,14 @@
     color: #FF5400;
     font-weight: bolder;
  }
+
+ .cart-toggle{
+    position: absolute;
+    bottom: .5em;
+    right: 2em;
+    padding: 1em 1.4em;
+    text-decoration: none;
+    border-radius: 100%;
+    background-color: #FF5400;
+    color: white;
+ }

@@ -60,7 +60,7 @@ export const cartSlice = createSlice({
       state.cart = [...filteredState]
 
       // add to localstorage
-      localStorage(state.cart)
+      toLocalStorage(state.cart)
     }
   },
 })

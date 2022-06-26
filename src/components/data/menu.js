@@ -78,7 +78,7 @@ export const data = {
                 price : 50,
                 description: "ths is the a menu item. It is for testing purposes. This is not real data.",
                 image: "https://thispersondoesnotexist.com"
-            },
+            }
         ]
     }
   ]

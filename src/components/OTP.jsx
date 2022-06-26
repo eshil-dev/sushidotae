@@ -1,12 +1,15 @@
 import React from "react";
-import otp from './otp.svg'
+import otp from '../images/otp.svg'
 import axios from "axios";
+import {Link} from "react-router-dom";
+
 
 class OTP extends React.Component{
     constructor(props){
         super(props);
         this.state={
             auth_code: props.auth_code,
+            user_code: null,
             code_sent: Math.floor(Math.random() * (9999 - 0 + 1) + 0),
             time: 6
         }
@@ -23,32 +26,18 @@ class OTP extends React.Component{
     }
 
    handleChange(event){
-    this.setState({auth_code: event.target.value})
+    this.setState({user_code: event.target.value})
    }
    
     handleSubmit(event){
-        if(this.state.auth_code == this.state.code_sent){
-            // put the redirect here
-            console.log("matched...")
+        if(this.state.auth_code == this.state.user_code){
+            console.log("matched...");
+            // re-route to locate-me page 
         }else{
             console.log('did not matched...Try again!')
         }
         event.preventDefault();
     }
-    // handleSent_again(){
-    //     // send a code and match
-    //     const sms_global_password = 'uVh9zc5Z'
-    //     const sms_global_user = '1bfz48ju'
-    //     const message = "this%20is%20a%20testing%20message."
-    //     const baseURL = `https://api.smsglobal.com/http-api.php?action=sendsms&user=${sms_global_user}&password=${sms_global_password}&from=Pizza.ae&to=971${this.props.number}&text=Your%20code%20is:%20${this.state.code_sent}`
-    
-    // axios({
-    //     method: 'get',
-    //     url: baseURL,
-    // }).then((response) =>{
-    //     (response.data.startsWith('OK') ? alert("code send."): alert(response.data));
-    // });
-    // }
 
     counter(){
         if(this.state.time > 0){

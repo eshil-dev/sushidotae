@@ -1,5 +1,5 @@
 import { GoogleMap, useLoadScript, Marker, Autocomplete } from '@react-google-maps/api';
-import './map.css';
+import './style.css';
 import {useState,useRef, useMemo} from 'react';
 
 
@@ -26,7 +26,6 @@ function Map(){
     
     // /** @type React.MutableRefObject<HTMLInputElement> */
     const originRef = useRef()
-
 
     return (
         <div className='container p-4'>

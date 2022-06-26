@@ -1,5 +1,5 @@
 import React from 'react';
-import './map.css';
+import './style.css';
 
 import {useSelector, useDispatch} from 'react-redux'
 import {addItem,increaseItem, decreaseItem, removeItem} from './store/cartSlice'
