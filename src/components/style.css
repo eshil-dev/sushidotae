@@ -46,3 +46,20 @@
     background-color: #FF5400;
     color: white;
  }
+
+ .locate{
+    position: absolute;
+    right: 0em;
+    /* left: 2em; */
+    z-index: 30;
+ }
+
+ .onMap{
+    position: relative;
+    left: 0;
+    z-index: 20;
+    margin: 0 3em 0 0;
+ }
+ .on-map-container{
+   margin:.4em;
+ }

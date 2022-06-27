@@ -4,7 +4,6 @@ import {useState,useRef, useMemo} from 'react';
 
 
 export default function MapTest(){
-    console.log(process.env.REACT_APP_NEXT_PUBLIC_GOOGLE_MAP_API_KEY)
     const { isLoaded } = useLoadScript({ 
         googleMapsApiKey: process.env.REACT_APP_NEXT_PUBLIC_GOOGLE_MAP_API_KEY,
         libraries:['places'],
@@ -17,29 +16,34 @@ export default function MapTest(){
 function Map(){
     const center = useMemo(()=> ({ lat: 25.197351, lng: 55.273647 }), []) 
     const [map, setMap] = useState(/** @type google.maps.map*/ null);
-
     const [autocomplete, setAutocomplate] = useState(null)
-    console.log(autocomplete)
-
     const [onload, setOnload] = useState(null)
-    console.log(onload)
+
+    let address = '';
+    let location = { lat:'', lng:''}
+
+    try{
+        onload.getPlace().address_components.map((i, key)=> {address += " "+i.long_name;})
+        location.lat = onload.getPlace().geometry.location.lat()
+        location.lng = onload.getPlace().geometry.location.lng()
+
+        console.log("load: ",onload)
+        console.log("add: ",address)
+        console.log("location: ",location)
+
+        console.log(autocomplete)
+    }catch(err){
+        console.log(err)
+    }
     
     // /** @type React.MutableRefObject<HTMLInputElement> */
     const originRef = useRef()
 
+    const clearInput =()=>{
+        console.log(map)
+    }
     return (
-        <div className='container p-4'>
-            <button className='btn btn-primary mb-2' onClick={()=> map.panTo(center)}>O</button>
-            <Autocomplete 
-                onPlaceChanged={setAutocomplate} 
-                onLoad={setOnload}>
-                <div className="input-group mb-2">
-                    <input type="text" ref={originRef}  
-                        className="form-control rounded-0"  
-                        placeholder="Search locations..."/>
-                    <span className="input-group-text rounded-0 ">X</span>
-                </div>
-            </Autocomplete>
+        <div className='container'>
 
             <GoogleMap zoom={16} center={center} mapContainerClassName='map'
             options={{
@@ -49,9 +53,26 @@ function Map(){
             }}
             onLoad={(map) => setMap(map)}
             >
+            <Autocomplete 
+                onPlaceChanged={setAutocomplate} 
+                onLoad={setOnload}>
+                <div className="input-group">
+                    <input type="text" ref={originRef}  
+                        className="form-control rounded-0"  
+                        placeholder="Search locations..."/>
+                        <span className="input-group-text rounded-0 btn btn-danger" onClick={clearInput}>X</span>
+
+                        <button className='btn btn-primary' 
+                            onClick={()=> map.panTo(center)}>
+                                <i class="bi bi-geo"></i>
+                        </button>
+                </div>
+            </Autocomplete>
             <Marker position={center}/>
-            
+            {location.lng !=='' && <Marker position={location} onLoad={()=> map.panTo(location)}></Marker>}
             </GoogleMap>
+            <p>{address}</p>
         </div>
     )
 }
+
