@@ -1,6 +1,6 @@
 .map{
     display: block;
-    height: 40em;
+    height: 30em;
     width: 100%;
     background-color: bisque;
 }
@@ -62,4 +62,19 @@
  }
  .on-map-container{
    margin:.4em;
+ }
+
+ .btn-address{
+   display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+ }
+
+ .locate-me-btn{
+   background-color: #FF5400;
+   border: none;
+   color: #FFF;
+   padding: 10px 15px;
+   width: 40%;
  }

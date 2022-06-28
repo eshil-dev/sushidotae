@@ -25,6 +25,7 @@ import { store } from './components/store/store'
 import { Provider } from 'react-redux'
 
 import {BrowserRouter, Routes, Route } from "react-router-dom";
+import MapTest from './components/testMap';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -36,7 +37,7 @@ root.render(
         <Routes>
           <Route path="/">
             <Route index element={<Home/>}/>
-            {/* <Route path='/test' element={<MapTest/>}/> */}
+            <Route path='/test' element={<MapTest/>}/>
             <Route path="/menu" element={<Menu/>}/>
             <Route path='/info' element={<Info/>}></Route>
             <Route path='/contact' element={<Contact/>}></Route>
