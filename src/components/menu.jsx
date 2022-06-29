@@ -9,6 +9,7 @@ import {Link} from "react-router-dom";
 
 function Menu(){
     const Orders = useSelector((state) => state.Orders.cart)
+    
     const {category} = data;
     return (
         <div>
@@ -18,7 +19,7 @@ function Menu(){
                         {category.map(cate => (
                             <li key={cate.id} className="mx-2 px-2 py-0 menu-links">
                                 <a className="nav-link text-white title-fonts"  href={"#"+cate.name}>
-                                    <h2 className=" title-fonts"><span>{cate.name} </span></h2>
+                                  <h2 className=" title-fonts"><span>{cate.name} </span></h2>
                                 </a>
                             </li> 
                         ))}
@@ -32,7 +33,11 @@ function Menu(){
                     ))}                           
                 </div>
             </div>
-            <Link className='cart-toggle' to='/order'>{Orders.length}</Link> 
+            <Link className='cart-toggle bg-success' to='/order'>
+                <i className="bi bi-basket"> 
+                <span className='position-absolute top-0 start-10 translate-middle badge rounded-circle bg border border-white'>{Orders.length}</span>
+                </i> 
+            </Link> 
         </div>
     );
 }

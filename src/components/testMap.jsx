@@ -7,18 +7,23 @@ import {
 import GoogleApiWrapper from "@googlemaps/react-wrapper";
 import Geocode from "react-geocode";
 import "./style.css";
-import { useState, useRef, useMemo, useEffect } from "react";
+import { useState } from "react";
+// import { useState, useRef, useMemo, useEffect } from "react";
+import {useSelector, useDispatch} from 'react-redux';
+import {user_address, user_location} from './store/orderSlice'
+
+
 
 // set Google Maps Geocoding API for purposes of quota management. Its optional but recommended.
-Geocode.setApiKey(`AIzaSyAua8DSSTJuQlSM-eKdwQISs6sk_n_TXIw`);
+Geocode.setApiKey(process.env.REACT_APP_NEXT_PUBLIC_GOOGLE_MAP_API_KEY);
 
 const MapTest = () => {
   const { isLoaded } = useLoadScript({
-    googleMapsApiKey: `AIzaSyAua8DSSTJuQlSM-eKdwQISs6sk_n_TXIw`,
+    googleMapsApiKey: process.env.REACT_APP_NEXT_PUBLIC_GOOGLE_MAP_API_KEY,
     libraries: ["places"],
     fields: ["place_id", "geometry", "name", "formatted_address"],
   });
-  if (!isLoaded) return <h1>still loading...</h1>;
+  if (!isLoaded) return <h1> Map still loading...</h1>;
   return <Map></Map>;
 };
 function Map() {
@@ -26,6 +31,9 @@ function Map() {
   const [autocomplete, setAutoComplete] = useState(null);
   const [address, setAddress] = useState("");
   const [location, setLocation] = useState({ lat: 25.197351, lng: 55.273647 });
+
+  const ordering = useSelector((state) => state.Ordering.ordering_process)
+  const dispatch = useDispatch();
 
   /**
    * todo: storing the place, lat and lng while selecting the place
@@ -36,10 +44,18 @@ function Map() {
     const location = {};
     location.lat = autocomplete?.getPlace()?.geometry.location.lat();
     location.lng = autocomplete?.getPlace()?.geometry.location.lng();
+
     setAddress(autocomplete.getPlace().formatted_address ?? "");
     setLocation(location);
+
+    // set location and address to ordering store
+    dispatch(user_address(autocomplete.getPlace().formatted_address ?? ""))
+    dispatch(user_location(location))
   };
 
+  const hanldeInputClear = ()=>{
+    console.log("clicked")
+  }
   /**
    *
    * @param {*} autocomplete  object of the place
@@ -77,6 +93,7 @@ function Map() {
     Geocode.fromLatLng(latitude, longitude).then(
       (response) => {
         const address = response.results[0].formatted_address;
+        
         setAddress(address);
       },
       (error) => {
@@ -100,6 +117,9 @@ function Map() {
           };
           getAddress(pos.lat, pos.lng);
           setLocation(pos);
+          // set location and address
+          dispatch(user_address(address))
+          dispatch(user_location(location))
           map && map.setCenter(pos);
         },
         () => {
@@ -123,7 +143,7 @@ function Map() {
   return (
     <div className="container">
       <GoogleMap
-        zoom={14}
+        zoom={16}
         center={location}
         mapContainerClassName="map"
         options={{
@@ -141,13 +161,12 @@ function Map() {
               className="form-control rounded-0"
               placeholder="Search locations..."
             />
-            <span className="input-group-text rounded-0 btn btn-danger">X</span>
+            {/* <span onClick={hanldeInputClear} className="input-group-text rounded-0 btn btn-danger">X</span> */}
 
             <button
-              className="btn btn-primary"
-              onClick={() => map.panTo(location)}
-            >
-              <i class="bi bi-geo"></i>
+              className="btn btn-primary rounded-0"
+              onClick={() => map.panTo(location)}>
+              <i className="bi bi-geo"></i>
             </button>
           </div>
         </Autocomplete>
@@ -159,11 +178,17 @@ function Map() {
           ></Marker>
         )}
       </GoogleMap>
-      <div className="btn-address">
+      <div className="row">
         <p>{address}</p>
-        <button className="locate-me-btn" onClick={onHandleLocateMe}>
-          Locate Me
-        </button>
+        <div className="col-sm-12 col-md-3"></div>
+        <div className="col-sm-12 col-md-6">
+          <div className="row p-2">
+            <button className="btn btn-success btn-lg rounded-0 m-1" onClick={onHandleLocateMe}>
+              Locate Me
+            </button>
+          </div>
+        </div>
+        <div className="col-sm-12 col-md-3"></div>
       </div>
     </div>
   );

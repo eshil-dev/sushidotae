@@ -25,13 +25,13 @@ function Header(){
                         <li className="nav-item">
                             <a className="nav-link text-light" href="/menu">Menu</a>
                         </li>
-                        <li className="nav-item">
+                        {/* <li className="nav-item">
                             <a className="nav-link btn mx-2 text-white bg card_border_color btn-danger position-relative">Inbox
                                 <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success">
                                     {Orders.length}
                                 </span>
                             </a>
-                        </li>
+                        </li> */}
                     </ul>
                 </div>
             </div>

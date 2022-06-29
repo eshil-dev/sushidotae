@@ -1,8 +1,56 @@
 import React from "react";
 import './style.css';
 import MapTest from "./testMap";
+import { useNavigate } from "react-router-dom";
+import {useSelector, useDispatch} from 'react-redux';
+import {user_fullName, user_custom_add} from './store/orderSlice';
+import {Link} from "react-router-dom";
+import { useState } from "react";
 
-function mapApp(){
+function MapApp(){
+    const ordering = useSelector((state) => state.Ordering.ordering_process)
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const [nameClass, setNameClass] = useState(" form-control rounded-0 ");
+    const [addClass, setAddClass] = useState(" form-control rounded-0 ");
+
+    const handleFullNameChange = (event)=>{
+        // set the full name into ordering store
+        dispatch(user_fullName(event.target.value));
+        if(ordering.user_fullName.length >= 0){ 
+            setNameClass(' form-control rounded-0 ');
+        }else{ 
+            setNameClass(' form-control rounded-0 border border-danger border-2 ');
+        }
+    }
+    const handleCustomAddeChange =(event)=>{
+        // set the full name into ordering store
+        dispatch(user_custom_add(event.target.value));
+        if(ordering.user_custom_add.length >= 0){ 
+            setAddClass(' form-control rounded-0 ');
+        }else{ 
+            setAddClass(' form-control rounded-0 border border-danger border-2 ');
+        }
+    }
+
+    const handleSubmit = (event)=>{
+        event.preventDefault();
+        if(ordering.user_fullName.length <= 0){
+            // not the next btn should be active and user can click to preceed
+            // navigate to summary order component
+            setNameClass(nameClass + " border border-danger border-2")
+        
+        }else if(ordering.user_custom_add <= 0){
+            setAddClass(addClass + " border border-danger border-2")
+          
+        }else{
+            navigate('/order-summary');
+        }
+
+        event.preventDefault();
+    }
+
     return (
         <div className="container p-3 py-4">
             <div className="row mt-2">
@@ -15,29 +63,34 @@ function mapApp(){
                 </div>
                 <div className="col-sm-12 col-md-3"></div>
                 <div className="col-sm-12 col-md-6">
-                    <div className="row my-3 px-2">
-                        <button className="btn rounded-0 text-light" style={{backgroundColor: "#FF5400"}}>Locate Me</button>
-                    </div>
-
-                    <form>
+                    <form onSubmit={handleSubmit}>
                         <div className="mb-3">
                             <label className="form-label m-0">Full Name</label>
-                            <input type="text" className="form-control rounded-0" placeholder="e.g: Ali Mohammad Ahmadi"/>
+                            
+                            <input type="text" 
+                                onChange={handleFullNameChange} 
+                                value={ordering.user_fullName} 
+                                className={nameClass}
+                                placeholder="e.g: Ali Mohammad Ahmadi"/>
                             {/* <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div> */}
                         </div>
                         <div className="mb-3">
                             <label className="form-label m-0">Address</label>
-                            <input type="text" className="form-control rounded-0" placeholder="Area, Street, Building, Villa No, Floor, Unit"/>
+                            <input type="text" 
+                                onChange={handleCustomAddeChange} 
+                                value={ordering.user_custom_add} 
+                                className={addClass}
+                                placeholder="Area, Street, Building, Villa No, Floor, Unit"/>
                         </div>
                         <div className="row">
                             <div className="col">
                                 <div className="row p-3">
-                                    <a href="/otp" type="submit" className="btn btn-lg rounded-0  btn-secondary">Back</a>
+                                    <Link to="/otp" className="btn btn-lg rounded-0  btn-secondary">Back</Link>
                                 </div>
                             </div>
                             <div className="col">
                                 <div className="row p-3">
-                                    <a href="/order-summary" type="submit" className="btn btn-lg rounded-0  btn-success">Next</a>
+                                    <button type="submit" className="btn btn-lg rounded-0  btn-success ">Next</button>
                                 </div>
                             </div>
                         
@@ -49,6 +102,6 @@ function mapApp(){
             </div>
         </div>
     )
-    }
+}
 
-export default mapApp;
+export default MapApp;

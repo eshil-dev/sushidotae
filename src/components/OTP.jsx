@@ -2,80 +2,76 @@ import React from "react";
 import otp from '../images/otp.svg'
 import axios from "axios";
 import {Link} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
+import {useSelector, useDispatch} from 'react-redux';
+import {page,sms_sent, phone_number, auth_code,valid_number} from './store/orderSlice'
+import { useState } from "react";
 
-class OTP extends React.Component{
-    constructor(props){
-        super(props);
-        this.state={
-            auth_code: props.auth_code,
-            user_code: null,
-            code_sent: Math.floor(Math.random() * (9999 - 0 + 1) + 0),
-            time: 6
-        }
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleChange = this.handleChange.bind(this);
-    }
-    componentDidMount() {
-        this.timerID = setInterval(() => this.setState({time: (this.state.time) - 1}),
-          1000
-        );
-    }
-    componentWillUnmount(){
-        clearInterval(this.timerID);
-    }
+export default function OTP(){
+    // const navigate = useNavigate();
+    // get the global store (cart order)
+    const ordering = useSelector((state) => state.Ordering.ordering_process)
+    const dispatch = useDispatch()
+    const navigate = useNavigate();
 
-   handleChange(event){
-    this.setState({user_code: event.target.value})
-   }
-   
-    handleSubmit(event){
-        if(this.state.auth_code == this.state.user_code){
-            console.log("matched...");
-            // re-route to locate-me page 
+    // set a local state for this function to store inputed auth code
+    const [input_code, setInput_code] = useState("");
+    
+    const handleSubmit=(event)=>{
+        if(parseInt(input_code) === parseInt(ordering.auth_code)){
+            // navigate to locate-me UI
+            navigate('/locate-me')
         }else{
-            console.log('did not matched...Try again!')
+            console.log("not")
+            console.log(ordering.auth_code)
+            console.log(input_code)
         }
         event.preventDefault();
     }
-
-    counter(){
-        if(this.state.time > 0){
-            return <span> {this.state.time}</span>
+    const handleChange=(event)=>{
+        if(event.target.value.length === 4){
+            // set the border color to green and size of medium
+            event.target.style.borderColor = '#009900';
+            event.target.style.borderWidth = 'medium';
+            // set the inputed auth code in local state
+            setInput_code(event.target.value)
+        }else if(event.target.value.length === 0){
+            // in case of empty input, no style
+            event.target.style.borderColor = '';
         }else{
-            return <a href="#" onClick={this.handleSent_again}>send again.</a>
+             // in case of invalid input, set it to red border
+            event.target.style.borderColor = '#ff5400';
         }
     }
-    render(){
-        return (
-            <div className="container py-4">
-                <div className="row mt-4">
-                    <div className="col-sm-12 col-md-3"></div>
-                    <div className="col-sm-12 col-md-6 text-center">
-                        <h1>Enter Your OTP</h1>
-                        <img src={otp} alt="Sushi.ae" height="200"/>
-                        <div className="coontainer">
-                            <div className="row">
-                                <div className="col-6 offset-3">
-                                    <form className="text-center" onSubmit={this.handleSubmit}>
-                                        <p className="my-3">Enter the OTP sent to <span> 0{this.props.number}</span></p>
-                                        <div className="input-group mt-3">
-                                            <input type="number" onChange={this.handleChange} className="form-control rounded-0"/>
-                                        </div>  
-                                        <span className="">did not get the code? &nbsp;{this.counter()}</span>
-                                        <div className="row px-2">
-                                            <input type="submit" className="mt-3 btn btn-lg rounded-0 btn-success"/>
-                                        </div>
-                                    </form>
-                                </div>
+
+
+    return (
+        <div className="container py-4">
+            <div className="row mt-4">
+                <div className="col-sm-12 col-md-3"></div>
+                <div className="col-sm-12 col-md-6 text-center">
+                    <h1>Enter Your OTP</h1>
+                    <img src={otp} alt="Sushi.ae" height="200"/>
+                    <div className="coontainer">
+                        <div className="row">
+                            <div className="col-6 offset-3">
+                                <form className="text-center" onSubmit={handleSubmit}>
+                                    <p className="my-3">Enter the OTP sent to <span> 0{ordering.phone_number}</span></p>
+                                    <div className="input-group mt-3">
+                                        <input type="text" maxLength='4' onChange={handleChange} className="form-control rounded-0"/>
+                                    </div>  
+                                    {/* <span className="">did not get the code? &nbsp;</span> */}
+                                    <div className="row px-2">
+                                        <input type="submit" className="mt-3 btn btn-lg rounded-0 btn-success"/>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
-                    <div className="col-sm-12 col-md-3"></div>
                 </div>
+                <div className="col-sm-12 col-md-3"></div>
             </div>
-        ) 
-    }
+        </div>
+    ) 
 }
-
-export default OTP;
