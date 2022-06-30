@@ -12,7 +12,7 @@ function Menu(){
     
     const {category} = data;
     return (
-        <div>
+        <div className='text-end'>
             <nav className="navbar navbar-expand-lg sticky-top bg">
                 <div className="container-fluid">
                     <ul className="navbar-nav mx-auto my-lg-0 flex_style" >
@@ -23,6 +23,12 @@ function Menu(){
                                 </a>
                             </li> 
                         ))}
+                        <li className='mx-2 px-2 py-0 menu-links '>
+                            <Link className="nav-link text-white title-fonts" to='/order'>
+                                <span className='tot-number text-center text-white bg-success'> {Orders.length }</span>
+                                <h2><i className="bi bi-basket" > </i> </h2> 
+                            </Link>
+                        </li>
                     </ul>
                 </div>
             </nav>
@@ -33,11 +39,7 @@ function Menu(){
                     ))}                           
                 </div>
             </div>
-            <Link className='cart-toggle bg-success' to='/order'>
-                <i className="bi bi-basket"> 
-                <span className='position-absolute top-0 start-10 translate-middle badge rounded-circle bg border border-white'>{Orders.length}</span>
-                </i> 
-            </Link> 
+           
         </div>
     );
 }

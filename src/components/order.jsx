@@ -4,6 +4,10 @@ import axios from "axios";
 import OTP from './OTP';
 import './style.css';
 
+
+// rgb(0, 142, 6) the green code 
+// #008e07
+
 import { useNavigate } from "react-router-dom";
 
 import {useSelector, useDispatch} from 'react-redux';
@@ -54,7 +58,9 @@ function Order(props){
                 // dispatch(phone_number(number))
                 navigate("/otp");
             }else{
-                console.log(response.data)
+                console.log('somethign went wrong.')
+                alert(`something Went Wrong!\n Please check your Phone number and Ensure it is correct.\n TIP! start your number without 0.`
+                )
             }
         })
         event.preventDefault();
@@ -64,35 +70,37 @@ function Order(props){
             <div className="row mt-3">
                 <div className="col-sm-12 col-md-3"></div>
                 <div className="col-sm-12 col-md-6 text-center">
-                    <h1>Confirm your order</h1>
-                    <table className="table">
-                        <thead className="border-bottom border-1 border-dark">
-                            <tr className="text-center">
-                                <th>X</th>
-                                <th>Item(s)</th>
-                                <th>Quantity</th>
-                                <th>Unite Price</th>
-                                <th>Total</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {Orders.map((item)=> (
-                                <tr key={item.id} className=""> 
-                                    <td><i onClick={()=> dispatch(removeItem(item))} className="bi-trash3 h4"></i> </td>
-                                    <td>{item.name}</td>
-                                    <td>
-                                        <span className='btn bg text-white rounded-0 p-0'>
-                                            <button onClick={()=>dispatch(decreaseItem(item))} className='increase'>-</button>
-                                            <span className='px-3'>{item.qty}</span>
-                                            <button className='increase' onClick={()=>dispatch(increaseItem(item))} >+</button>
-                                        </span>
-                                    </td>
-                                    <td>{item.price  } AED</td>
-                                    <td>{item.price  * item.qty} AED</td>
+                    <h1 className="text_color">Confirm your order</h1>
+                    <div className="overflow-auto container" >
+                        <table className="table">
+                            <thead className="">
+                                <tr className="text-center">
+                                    <th className="text-nowrap text-danger">X</th>
+                                    <th className="text-nowrap text_color">Item(s)</th>
+                                    <th className="text-nowrap text_color">Quantity</th>
+                                    <th className="text-nowrap text_color">Unite Price</th>
+                                    <th className="text-nowrap text_color">Total</th>
                                 </tr>
-                            ))}
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody className="align-middle">
+                                {Orders.map((item)=> (
+                                    <tr key={item.id} className=""> 
+                                        <td className="text-nowrap"><i onClick={()=> dispatch(removeItem(item))} className="bi-trash3 h4 text-danger"></i> </td>
+                                        <td className="text-nowrap text_color">{item.name}</td>
+                                        <td className="text-nowrap">
+                                            <span className='btn bg text-nowrap text-white rounded-0 p-0'>
+                                                <button onClick={()=>dispatch(decreaseItem(item))} className='increase'>-</button>
+                                                <span className='px-3'>{item.qty}</span>
+                                                <button className='increase' onClick={()=>dispatch(increaseItem(item))} >+</button>
+                                            </span>
+                                        </td>
+                                        <td className="text-nowrap text_color">{item.price} AED</td>
+                                        <td className="text-nowrap text_color">{item.price  * item.qty} AED</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
                     <form className="text-center" onSubmit={handleSubmit}>
                         <div className="input-group col-sm-6 my-3">
                             <span className="input-group-text rounded-0 " id="basic-addon1">
@@ -100,12 +108,12 @@ function Order(props){
                             </span>
                             <input type="text" 
                             onChange={handleChange}
-                            className="form-control rounded-0" 
+                            className="form-control rounded-0 fs-5" 
                             maxLength='9'
                             placeholder="5 --------"/>
                         </div>
                         <div className="row px-2">
-                            <button disabled={!valid_number} className="btn btn-lg rounded-0 btn-success">Validate Me</button>
+                            <button disabled={!valid_number} className="btn btn-lg rounded-0 btn-success bg">Validate Me</button>
                             {/* <Link className="btn btn-lg rounded-0 btn-success" to='/otp'>validate me</Link> */}
                         </div>
                     </form>

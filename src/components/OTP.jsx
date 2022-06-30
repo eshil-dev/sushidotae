@@ -23,9 +23,7 @@ export default function OTP(){
             // navigate to locate-me UI
             navigate('/locate-me')
         }else{
-            console.log("not")
-            console.log(ordering.auth_code)
-            console.log(input_code)
+           alert(<p className="text-danger">Code did not match</p>)
         }
         event.preventDefault();
     }
@@ -63,7 +61,7 @@ export default function OTP(){
                                     </div>  
                                     {/* <span className="">did not get the code? &nbsp;</span> */}
                                     <div className="row px-2">
-                                        <input type="submit" className="mt-3 btn btn-lg rounded-0 btn-success"/>
+                                        <input type="submit" className="mt-3 btn btn-lg bg rounded-0 btn-success"/>
                                     </div>
                                 </form>
                             </div>

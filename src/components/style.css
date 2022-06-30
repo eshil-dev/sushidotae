@@ -5,26 +5,28 @@
     background-color: bisque;
 }
 
-.card_border_color{border-color: #FF5400}
-.bg{background-color: #FF5400}
-.text_color{color: #FF5400}
+.card_border_color{border-color: #008e07}
+.border-color{border-color: #008e07!important}
+.card-bottom-color{border-bottom-color: #008e07!important}
+.bg{background-color: #008e07}
+.text_color{color: #008e07}
 
 .bg:hover{
-    background-color: #FF5400;
+    background-color: #008e07;
 }
 .flex_style {flex-direction: row;}  
 
 .text_on_line{
     width: 100%;
     text-align: center;
-    border-bottom: 1px solid #FF5400;
+    border-bottom: 1px solid #008e07;
     line-height: 0.1em;
     margin: 20px 0 30px;
 }
 .text_on_line_span { 
      background-color:#FFF;
      padding:0 10px;
-     color: #FF5400,
+     color: #008e07,
  }
 
  .increase{
@@ -32,22 +34,8 @@
     border-radius: 0;
     margin: 0;
     padding: 5px 10px;
-    color: #FF5400;
+    color: #008e07;
     font-weight: bolder;
- }
-
- .cart-toggle{
-    position: absolute;
-    bottom: .5em;
-    right: 2em;
-    padding: .8em 1em;
-    text-decoration: none;
-    border-radius: 100%;
-    /* background-color: #FF5400; */
-    color: white;
- }
- .cart-toggle:hover{
-   color: blanchedalmond;
  }
 
  .locate{
@@ -69,13 +57,30 @@
 
 
  .btn-sushi{
-   background-color: #FF5400;
+   background-color: #008e07;
    color: #FFF;
    border-radius: 0%;
 
  }
 
  .btn-sushi:hover{
-   background-color: #EE5400;
+   background-color: #008e07;
    color: white;
+ }
+
+
+ .tot-number{
+  position: absolute;
+  top: 10px;
+  border: 1px solid white;
+  width: 20px;
+  height: 20px;
+  border-radius: 100px;
+  font-size: small;
+  transform: translate(-115%, -15%);
+ }
+
+
+ .table-res{
+  overflow-x: auto;
  }

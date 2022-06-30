@@ -47,7 +47,6 @@ function MapApp(){
         }else{
             navigate('/order-summary');
         }
-
         event.preventDefault();
     }
 
@@ -90,7 +89,7 @@ function MapApp(){
                             </div>
                             <div className="col">
                                 <div className="row p-3">
-                                    <button type="submit" className="btn btn-lg rounded-0  btn-success ">Next</button>
+                                    <button type="submit" className="btn btn-lg rounded-0  btn-success bg">Next</button>
                                 </div>
                             </div>
                         

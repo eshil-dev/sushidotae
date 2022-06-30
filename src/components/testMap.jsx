@@ -164,7 +164,7 @@ function Map() {
             {/* <span onClick={hanldeInputClear} className="input-group-text rounded-0 btn btn-danger">X</span> */}
 
             <button
-              className="btn btn-primary rounded-0"
+              className="btn btn-primary bg rounded-0"
               onClick={() => map.panTo(location)}>
               <i className="bi bi-geo"></i>
             </button>
@@ -183,7 +183,7 @@ function Map() {
         <div className="col-sm-12 col-md-3"></div>
         <div className="col-sm-12 col-md-6">
           <div className="row p-2">
-            <button className="btn btn-success btn-lg rounded-0 m-1" onClick={onHandleLocateMe}>
+            <button className="btn btn-success bg btn-lg rounded-0 m-1" onClick={onHandleLocateMe}>
               Locate Me
             </button>
           </div>

@@ -1,83 +1,125 @@
+function importAll(r) {
+    return r.keys().map(r);
+  }
+
+// import images 
+const sushies = importAll(require.context('../../images/', false, /\.(png|jpe?g)$/));
+const sushi = [...sushies];
+
+const fry = importAll(require.context('../../images/fries/', false, /\.(png|jpe?g)$/));
+const fries = [...fry];
+
+const drinkes = importAll(require.context('../../images/drinks/', false, /\.(png|jpe?g|webp)$/));
+const drinks = [...drinkes];
+
 export const data = {
   category:[
     {
-        id:12,
-        name:'pizza',
+        id:16,
+        name:'Sushi',
         product: [
             {
                 id:1,
-                name: "sushi",
+                name: "Alaska",
                 price : 80,
                 description: "ths is the a menu item. It is for testing purposes. This is not real data.",
-                image: "https://thispersondoesnotexist.com"
+                image: sushi[0]
             },
             {
                 id:2,
-                name: "PIZZA",
+                name: "Californai",
                 price : 70,
                 description: "ths is the a menu item. It is for testing purposes. This is not real data.",
-                image: "https://thispersondoesnotexist.com"
+                image: sushi[1]
             },
             {
                 id:3,
-                name: "drink",
+                name: "Wave Roll",
+                price : 20.00,
+                description: "ths is the a menu item. It is for testing purposes. This is not real data.",
+                image: sushi[5]
+            },
+            {
+                id:4,
+                name: "Atlantic",
+                price : 42.00,
+                description: "ths is the a menu item. It is for testing purposes. This is not real data.",
+                image: sushi[1]
+            },
+            {
+                id:5,
+                name: "Spicy Crab",
+                price : 34.00,
+                description: "ths is the a menu item. It is for testing purposes. This is not real data.",
+                image: sushi[7]
+            },
+            {
+                id:6,
+                name: "Vegetarian",
                 price : 50,
                 description: "ths is the a menu item. It is for testing purposes. This is not real data.",
-                image: "https://thispersondoesnotexist.com"
+                image: sushi[2]
             },
         ]
     },
     {
-        id:123,
-        name:'sushi',
+        id:15,
+        name:'Fries',
         product: [
             {
-                id:4,
-                name: "sushi",
+                id:7,
+                name: "Potato Fries",
                 price : 80,
                 description: "ths is the a menu item. It is for testing purposes. This is not real data.",
-                image: "https://thispersondoesnotexist.com"
+                image: fries[0]
             },
             {
-                id:5,
-                name: "PIZZA",
+                id:8,
+                name: "MC Fries",
                 price : 70,
                 description: "ths is the a menu item. It is for testing purposes. This is not real data.",
-                image: "https://thispersondoesnotexist.com"
+                image: fries[1]
             },
             {
-                id:6,
-                name: "drink",
+                id:9,
+                name: "Chips",
                 price : 50,
                 description: "ths is the a menu item. It is for testing purposes. This is not real data.",
-                image: "https://thispersondoesnotexist.com"
+                image: fries[2]
             },
         ]
     },
     {
         id:14,
-        name:'drink',
+        name:'Drinks',
         product: [
             {
-                id:7,
-                name: "sushi",
-                price : 80,
+                id:10,
+                name: "Yougurt",
+                price : 5,
                 description: "ths is the a menu item. It is for testing purposes. This is not real data.",
-                image: "https://thispersondoesnotexist.com"
+                image: drinks[0]
             },
             {
-                id:8,
-                name: "PIZZA",
-                price : 70,
+                id:11,
+                name: "Coca Cola",
+                price : 12,
                 description: "ths is the a menu item. It is for testing purposes. This is not real data.",
-                image: "https://thispersondoesnotexist.com"
+                image: drinks[1]
             },
             {
-                id:9,
-                name: "drink",
-                price : 50,
+                id:12,
+                name: "Seven Up",
+                price : 10,
                 description: "ths is the a menu item. It is for testing purposes. This is not real data.",
-                image: "https://thispersondoesnotexist.com"
+                image: drinks[2]
+            },
+            {
+                id:13,
+                name: "Small Water",
+                price : 8,
+                description: "ths is the a menu item. It is for testing purposes. This is not real data.",
+                image: drinks[3]
             }
         ]
     }

@@ -20,7 +20,6 @@ import Order from './components/order';
 import OTP from './components/OTP';
 import Location from './components/locate_me';
 import OrderSummary from './components/order_summary';
-
 import { store } from './components/store/store'
 import { Provider } from 'react-redux'
 

@@ -1,12 +1,12 @@
 import {useSelector} from 'react-redux';
 import './style.css';
-
+import {Link} from "react-router-dom";
 function Header(){
     const Orders = useSelector((state) => state.Orders.cart)
         return (
-            <nav className="navbar navbar-expand-lg bg-dark">
-            <div className="container">
-                <a className="navbar-brand fw-bold fs-4 text-light" href="/">Sushi.ae</a>
+            <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div className="container ">
+                <a className="navbar-brand fw-bold fs-1 text-light" href="/">SUSHI.AE</a>
                 <button 
                     className="navbar-toggler" 
                     type="button" 
@@ -15,23 +15,16 @@ function Header(){
                     aria-controls="navbarSupportedContent" 
                     aria-expanded="false" 
                     aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
+                        <span className="navbar-toggler-icon" style={{color:'#fff!important'}}></span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav ms-auto my-3">
                         <li className="nav-item">
-                            <a className="nav-link active text-light" aria-current="page" href="/">Home</a>
+                            <a className="nav-link fs-5 active text-light" aria-current="page" href="/">Home</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link text-light" href="/menu">Menu</a>
+                            <a className="nav-link fs-5 text-light" href="/menu">Menu</a>
                         </li>
-                        {/* <li className="nav-item">
-                            <a className="nav-link btn mx-2 text-white bg card_border_color btn-danger position-relative">Inbox
-                                <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success">
-                                    {Orders.length}
-                                </span>
-                            </a>
-                        </li> */}
                     </ul>
                 </div>
             </div>
