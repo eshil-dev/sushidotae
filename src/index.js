@@ -22,6 +22,8 @@ import Location from './components/locate_me';
 import OrderSummary from './components/order_summary';
 import { store } from './components/store/store'
 import { Provider } from 'react-redux'
+import MakeYourSushi from './components/Make-your-sushi';
+
 
 import {BrowserRouter, Routes, Route } from "react-router-dom";
 import MapTest from './components/testMap';
@@ -36,7 +38,7 @@ root.render(
         <Routes>
           <Route path="/">
             <Route index element={<Home/>}/>
-            <Route path='/test' element={<MapTest/>}/>
+            <Route path='/make-your-sushi' element={<MakeYourSushi/>}/>
             <Route path="/menu" element={<Menu/>}/>
             <Route path='/info' element={<Info/>}></Route>
             <Route path='/contact' element={<Contact/>}></Route>

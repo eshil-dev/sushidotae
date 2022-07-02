@@ -25,11 +25,15 @@ function Header(){
                         <li className="nav-item">
                             <a className="nav-link fs-5 text-light" href="/menu">Menu</a>
                         </li>
+                        <li className='nav-item mx-2'>
+                            <a className='nav-link text-light btn bg rounded-pill my-0 py-auto px-3' href="https://wa.me/9718007499223">
+                            <i className="bi bi-whatsapp"></i> WhatsApp
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
         </nav>
         )
     }
-
 export default Header;

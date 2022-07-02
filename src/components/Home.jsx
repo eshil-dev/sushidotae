@@ -1,17 +1,22 @@
 import React from  'react';
+import {Link} from "react-router-dom";
+import logo from '../images/sushi-logo.png';
 
-class Home extends React.Component{
-    constructor(props){
-        super(props);
-    }
+function Home(){
+    return (
+        <div className="container">
+            <div className="row text-center my-5">
+                <div className="col-sm-12 col-md-4"></div>
+                <div className="col-sm-12 col-md-4 my-5">
+                    <img className='img-thumbnail border-0' src={logo} alt="SUSHI.AE" />
+                    {/* <h1>SUSHI.AE</h1> */}
+                    <Link className='fs-5 btn btn-sushi my-2 text-uppercase'  to='/menu'>Order from Menu</Link> <br />
+                    <Link className='fs-5 btn btn-sushi my-2 text-uppercase' to='/make-your-sushi'>I will do it myself</Link>
 
-    render(){
-        return (
-           <div>
-            <h1>home page</h1>
-           </div>
-        );
-    }
+                </div>
+                <div className="col-sm-12 col-md-4"></div>
+            </div>
+        </div>
+    )
 }
-
 export default Home;
