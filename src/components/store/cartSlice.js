@@ -16,8 +16,8 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     addItem: (state, action) => {
-      state.cart = [...state.cart, {...action.payload, qty:1}]
-
+      const newItem = [...state.cart,{...action.payload, qty:1}]
+      state.cart = [...newItem]
       // add cart to localstorage
       toLocalStorage(state.cart)
     },
@@ -35,7 +35,6 @@ export const cartSlice = createSlice({
         newItems[index].qty--;
         state.cart = [...newItems]
       }
-
       // add cart to localstorage
       toLocalStorage(state.cart)
     },
@@ -57,6 +56,12 @@ export const cartSlice = createSlice({
 
       // add to localstorage
       toLocalStorage(state.cart)
+    },
+    emptyItem:(state)=>{
+      // this reducer emppty the order list
+      state.cart = []
+      toLocalStorage([])
+      console.log("did,", state.cart)
     }
   },
 })
@@ -67,7 +72,7 @@ function toLocalStorage(cart){
 }
 
 // Action creators are generated for each case reducer function
-export const { addItem, increaseItem, decreaseItem, removeItem } = cartSlice.actions
+export const { addItem, increaseItem, decreaseItem, removeItem, emptyItem } = cartSlice.actions
 
 export default cartSlice.reducer
 

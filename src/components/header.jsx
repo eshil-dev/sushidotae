@@ -6,7 +6,7 @@ function Header(){
         return (
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
             <div className="container ">
-                <a className="navbar-brand fw-bold fs-1 text-light" href="/">SUSHI.AE</a>
+                <Link className="navbar-brand fw-bold fs-1 text-light" to='/'>SUSHI.AE</Link>
                 <button 
                     className="navbar-toggler" 
                     type="button" 
@@ -20,10 +20,10 @@ function Header(){
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav ms-auto my-3">
                         <li className="nav-item">
-                            <a className="nav-link fs-5 active text-light" aria-current="page" href="/">Home</a>
+                            <Link className="nav-link fs-5 active text-light" to='/'> Home</Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link fs-5 text-light" href="/menu">Menu</a>
+                            <Link className="nav-link fs-5 text-light" to='/menu'> Menu</Link>
                         </li>
                         <li className='nav-item mx-2'>
                             <a className='nav-link text-light btn bg rounded-pill my-0 py-auto px-3' href="https://wa.me/9718007499223">

@@ -137,7 +137,7 @@ function Map() {
    */
   const mapLoad = (map) => {
     setMap(map);
-    onHandleLocateMe();
+    // onHandleLocateMe();
   };
 
   return (
@@ -182,8 +182,8 @@ function Map() {
         <p>{address}</p>
         <div className="col-sm-12 col-md-3"></div>
         <div className="col-sm-12 col-md-6">
-          <div className="row p-2">
-            <button className="btn btn-success bg btn-lg rounded-0 m-1" onClick={onHandleLocateMe}>
+          <div className="row p-1">
+            <button className="btn btn-success btn-lg" onClick={onHandleLocateMe}>
               Locate Me
             </button>
           </div>

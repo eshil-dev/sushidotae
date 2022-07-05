@@ -10,8 +10,8 @@ function Home(){
                 <div className="col-sm-12 col-md-4 my-5">
                     <img className='img-thumbnail border-0' src={logo} alt="SUSHI.AE" />
                     {/* <h1>SUSHI.AE</h1> */}
-                    <Link className='fs-5 btn btn-sushi my-2 text-uppercase'  to='/menu'>Order from Menu</Link> <br />
-                    <Link className='fs-5 btn btn-sushi my-2 text-uppercase' to='/make-your-sushi'>I will do it myself</Link>
+                    <Link className='fs-5 btn my-2 btn-outlined-success rounded-pill px-5 border border-success fw-bold' to='/menu'>Order from Menu</Link> <br />
+                    <Link className='fs-5 btn my-2 btn-outlined-success rounded-pill px-5 border border-success fw-bold' to='/make-your-sushi'>I will do it myself</Link>
 
                 </div>
                 <div className="col-sm-12 col-md-4"></div>

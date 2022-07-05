@@ -19,31 +19,30 @@ class Footer extends React.Component{
                             <div className="card border-0 rounded-0 mt-3 p-3" style={style}>
                                 <h4 className="my-1 text-light "><b> Discover Sushi.ae</b></h4>
                                 <p className="my-2 ">
-                                {/* <Link to="what-is-sushi"> what is sushi.ae?</Link> */}
-                                    <a href="/info" className="text-decoration-none links-text text-light">What is Sushi.ae?</a>
+                                    <Link to="/info" className="text-decoration-none links-text text-light">What is Sushi.ae?</Link>
                                 </p>
-                                <p className="my-2 "><a href="contact" className="text-decoration-none links-text text-light">Contacts </a></p>
+                                <p className="my-2 "><Link to="/contact" className="text-decoration-none links-text text-light">Contacts </Link></p>
                             
-                                <p className="my-2 "><a href="contact" className="text-decoration-none links-text text-light">Address</a></p>
+                                <p className="my-2 "><Link to="/contact" className="text-decoration-none links-text text-light">Address</Link></p>
                             </div>
                         </div>
                         <div className="col-lg-3 col-md-6 col-sm-12">
                             <div className="card border-0 rounded-0 mt-3 p-3" style={style}>
                                 <h4 className="my-1 text-light title-text"> <b>Legal </b></h4>
                     
-                                    <p className="my-2 "><a href="/terms-and-conditions" className="text-decoration-none links-text text-light">Terms and Conditions </a></p>
-                                    <p className="my-2 "><a href="/franchies" className="text-decoration-none links-text text-light">Franchise </a></p>
-                                    <p className="my-2 "><a href="/consumers-rights" className="text-decoration-none links-text text-light">Consumer Rights </a></p>
-                                    <p className="my-2 "><a href="/cookies" className="text-decoration-none links-text text-light">Cookies </a></p>
-                                    <p className="my-2 "><a href="/refund" className="text-decoration-none links-text text-light">Refund Policy </a></p>
+                                    <p className="my-2 "><Link to="/terms-and-conditions" className="text-decoration-none links-text text-light">Terms and Conditions </Link></p>
+                                    <p className="my-2 "><Link to="/franchies" className="text-decoration-none links-text text-light">Franchise </Link></p>
+                                    <p className="my-2 "><Link to="/consumers-rights" className="text-decoration-none links-text text-light">Consumer Rights </Link></p>
+                                    <p className="my-2 "><Link to="/cookies" className="text-decoration-none links-text text-light">Cookies </Link></p>
+                                    <p className="my-2 "><Link to="/refund" className="text-decoration-none links-text text-light">Refund Policy </Link></p>
                             </div>
                         </div>
                         <div className="col-lg-3 col-md-6 col-sm-12">
                             <div className="card border-0 rounded-0 mt-3 p-3" style={style}>
                                 <h4 className="my-1 text-light"> <b>Help </b></h4>
-                                <p className="my-2 "><a href="/contact" className="text-decoration-none links-text text-light">Contact Us </a></p>
-                                <p className="my-2 "><a href="/faq" className="text-decoration-none links-text text-light">FAQ </a></p>
-                                <p className="my-2 "><a href="/career" className="text-decoration-none links-text text-light">Careers </a></p>
+                                <p className="my-2 "><Link to="/contact" className="text-decoration-none links-text text-light">Contact Us </Link></p>
+                                <p className="my-2 "><Link to="/faq" className="text-decoration-none links-text text-light">FAQ </Link></p>
+                                <p className="my-2 "><Link to="/career" className="text-decoration-none links-text text-light">Careers </Link></p>
 
                             </div>
                         </div>
@@ -82,7 +81,7 @@ class Footer extends React.Component{
                         </div>
                     </div>
                 <div className="row">
-                    <h1 className='text-center text-light fw-bold'>SUSHI.AE</h1>
+                    <Link to='/' className='text-center text-light fw-bold text-decoration-none'>SUSHI.AE</Link>
                 </div>
                </div>
             </footer>

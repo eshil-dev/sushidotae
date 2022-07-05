@@ -12,8 +12,8 @@ function MapApp(){
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const [nameClass, setNameClass] = useState(" form-control rounded-0 ");
-    const [addClass, setAddClass] = useState(" form-control rounded-0 ");
+    const [nameClass, setNameClass] = useState(" form-control");
+    const [addClass, setAddClass] = useState(" form-control ");
 
     const handleFullNameChange = (event)=>{
         // set the full name into ordering store
@@ -65,7 +65,6 @@ function MapApp(){
                     <form onSubmit={handleSubmit}>
                         <div className="mb-3">
                             <label className="form-label m-0">Full Name</label>
-                            
                             <input type="text" 
                                 onChange={handleFullNameChange} 
                                 value={ordering.user_fullName} 
@@ -84,18 +83,17 @@ function MapApp(){
                         <div className="row">
                             <div className="col">
                                 <div className="row p-3">
-                                    <Link to="/otp" className="btn btn-lg rounded-0  btn-secondary">Back</Link>
+                                    <Link to="/otp" className="btn btn-lg btn-secondary">Back</Link>
                                 </div>
                             </div>
                             <div className="col">
                                 <div className="row p-3">
-                                    <button type="submit" className="btn btn-lg rounded-0  btn-success bg">Next</button>
+                                    <button type="submit" className="btn btn-lg btn-primary">Next</button>
                                 </div>
                             </div>
                         
                         </div>
                     </form>
-                    
                 </div>
                 <div className="col-sm-12 col-md-3"></div>
             </div>

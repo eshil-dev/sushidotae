@@ -59,8 +59,7 @@ function Order(props){
                 navigate("/otp");
             }else{
                 console.log('somethign went wrong.')
-                alert(`something Went Wrong!\n Please check your Phone number and Ensure it is correct.\n TIP! start your number without 0.`
-                )
+                alert(`something Went Wrong!\n Please check your Phone number and Ensure it is correct.\n TIP! start your number without 0.`)
             }
         })
         event.preventDefault();
@@ -68,8 +67,8 @@ function Order(props){
     return (
         <div className="container p-3 py-4">
             <div className="row mt-3">
-                <div className="col-sm-12 col-md-3"></div>
-                <div className="col-sm-12 col-md-6 text-center">
+                <div className="col-sm-12 col-md-0 col-lg-3"></div>
+                <div className="col-sm-12 col-md-12 col-lg-6 text-center">
                     <h1 className="text_color">Confirm your order</h1>
                     <div className="overflow-auto container" >
                         <table className="table">
@@ -118,7 +117,7 @@ function Order(props){
                         </div>
                     </form>
                 </div>
-                <div className="col-sm-12 col-md-3"></div>
+                <div className="col-sm-12 col-md-0 col-lg-3"></div>
             </div>
         </div>
     )

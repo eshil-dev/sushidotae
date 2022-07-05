@@ -12,6 +12,7 @@ const fries = [...fry];
 const drinkes = importAll(require.context('../../images/drinks/', false, /\.(png|jpe?g|webp)$/));
 const drinks = [...drinkes];
 
+
 export const data = {
   category:[
     {
@@ -23,42 +24,48 @@ export const data = {
                 name: "Alaska",
                 price : 80,
                 description: "ths is the a menu item. It is for testing purposes. This is not real data.",
-                image: sushi[0]
+                image: sushi[0],
+                in_cart:false
             },
             {
                 id:2,
                 name: "Californai",
                 price : 70,
                 description: "ths is the a menu item. It is for testing purposes. This is not real data.",
-                image: sushi[1]
+                image: sushi[1],
+                in_cart:false
             },
             {
                 id:3,
                 name: "Wave Roll",
                 price : 20.00,
                 description: "ths is the a menu item. It is for testing purposes. This is not real data.",
-                image: sushi[5]
+                image: sushi[5],
+                in_cart:false
             },
             {
                 id:4,
                 name: "Atlantic",
                 price : 42.00,
                 description: "ths is the a menu item. It is for testing purposes. This is not real data.",
-                image: sushi[1]
+                image: sushi[1],
+                in_cart:false
             },
             {
                 id:5,
                 name: "Spicy Crab",
                 price : 34.00,
                 description: "ths is the a menu item. It is for testing purposes. This is not real data.",
-                image: sushi[7]
+                image: sushi[7],
+                in_cart:false
             },
             {
                 id:6,
                 name: "Vegetarian",
                 price : 50,
                 description: "ths is the a menu item. It is for testing purposes. This is not real data.",
-                image: sushi[2]
+                image: sushi[2],
+                in_cart:false
             },
         ]
     },
@@ -71,21 +78,24 @@ export const data = {
                 name: "Potato Fries",
                 price : 80,
                 description: "ths is the a menu item. It is for testing purposes. This is not real data.",
-                image: fries[0]
+                image: fries[0],
+                in_cart:false
             },
             {
                 id:8,
                 name: "MC Fries",
                 price : 70,
                 description: "ths is the a menu item. It is for testing purposes. This is not real data.",
-                image: fries[1]
+                image: fries[1],
+                in_cart:false
             },
             {
                 id:9,
                 name: "Chips",
                 price : 50,
                 description: "ths is the a menu item. It is for testing purposes. This is not real data.",
-                image: fries[2]
+                image: fries[2],
+                in_cart:false
             },
         ]
     },
@@ -98,28 +108,32 @@ export const data = {
                 name: "Yougurt",
                 price : 5,
                 description: "ths is the a menu item. It is for testing purposes. This is not real data.",
-                image: drinks[0]
+                image: drinks[0],
+                in_cart:false
             },
             {
                 id:11,
                 name: "Coca Cola",
                 price : 12,
                 description: "ths is the a menu item. It is for testing purposes. This is not real data.",
-                image: drinks[1]
+                image: drinks[1],
+                in_cart:false
             },
             {
                 id:12,
                 name: "Seven Up",
                 price : 10,
                 description: "ths is the a menu item. It is for testing purposes. This is not real data.",
-                image: drinks[2]
+                image: drinks[2],
+                in_cart:false
             },
             {
                 id:13,
                 name: "Small Water",
                 price : 8,
                 description: "ths is the a menu item. It is for testing purposes. This is not real data.",
-                image: drinks[3]
+                image: drinks[3],
+                in_cart:false
             }
         ]
     }
