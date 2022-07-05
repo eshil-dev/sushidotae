@@ -8,7 +8,7 @@ import './style.css';
 // rgb(0, 142, 6) the green code 
 // #008e07
 
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import {useSelector, useDispatch} from 'react-redux';
 import {increaseItem, decreaseItem, removeItem} from './store/cartSlice'
@@ -70,53 +70,63 @@ function Order(props){
                 <div className="col-sm-12 col-md-0 col-lg-3"></div>
                 <div className="col-sm-12 col-md-12 col-lg-6 text-center">
                     <h1 className="text_color">Confirm your order</h1>
-                    <div className="overflow-auto container" >
-                        <table className="table">
-                            <thead className="">
-                                <tr className="text-center">
-                                    <th className="text-nowrap text-danger">X</th>
-                                    <th className="text-nowrap text_color">Item(s)</th>
-                                    <th className="text-nowrap text_color">Quantity</th>
-                                    <th className="text-nowrap text_color">Unite Price</th>
-                                    <th className="text-nowrap text_color">Total</th>
-                                </tr>
-                            </thead>
-                            <tbody className="align-middle">
-                                {Orders.map((item)=> (
-                                    <tr key={item.id} className=""> 
-                                        <td className="text-nowrap"><i onClick={()=> dispatch(removeItem(item))} className="bi-trash3 h4 text-danger"></i> </td>
-                                        <td className="text-nowrap text_color">{item.name}</td>
-                                        <td className="text-nowrap">
-                                            <span className='btn bg text-nowrap text-white rounded-0 p-0'>
-                                                <button onClick={()=>dispatch(decreaseItem(item))} className='increase'>-</button>
-                                                <span className='px-3'>{item.qty}</span>
-                                                <button className='increase' onClick={()=>dispatch(increaseItem(item))} >+</button>
-                                            </span>
-                                        </td>
-                                        <td className="text-nowrap text_color">{item.price} AED</td>
-                                        <td className="text-nowrap text_color">{item.price  * item.qty} AED</td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
-                    </div>
-                    <form className="text-center" onSubmit={handleSubmit}>
-                        <div className="input-group col-sm-6 my-3">
-                            <span className="input-group-text rounded-0 " id="basic-addon1">
-                                <img src={ae} height="30" alt=""/>
-                            </span>
-                            <input type="text" 
-                            onChange={handleChange}
-                            className="form-control rounded-0 fs-5" 
-                            maxLength='9'
-                            placeholder="5 --------"/>
+                    {Orders.length <= 0 ? 
+                        <div className="row">
+                            <p className="fs-4">You do not have item in your basket.</p>
+                            <Link className="btn btn-primary" to='/menu'>Go to Menu</Link>
                         </div>
-                        <div className="row px-2">
-                            <button disabled={!valid_number} className="btn btn-lg rounded-0 btn-success bg">Validate Me</button>
-                            {/* <Link className="btn btn-lg rounded-0 btn-success" to='/otp'>validate me</Link> */}
+                    :
+                        <div>
+                            <div className="overflow-auto container" >
+                                <table className="table">
+                                    <thead className="">
+                                        <tr className="text-center">
+                                            <th className="text-nowrap text-danger">X</th>
+                                            <th className="text-nowrap text_color">Item(s)</th>
+                                            <th className="text-nowrap text_color">Quantity</th>
+                                            <th className="text-nowrap text_color">Unite Price</th>
+                                            <th className="text-nowrap text_color">Total</th>
+                                        </tr>
+                                    </thead>
+                                    
+                                    <tbody className="align-middle">
+                                        {Orders.map((item)=> (
+                                            <tr key={item.id} className=""> 
+                                                <td className="text-nowrap"><i onClick={()=> dispatch(removeItem(item))} className="bi-trash3 h4 text-danger"></i> </td>
+                                                <td className="text-nowrap text_color">{item.name}</td>
+                                                <td className="text-nowrap">
+                                                    <span className='btn bg text-nowrap text-white rounded-0 p-0'>
+                                                        <button onClick={()=>dispatch(decreaseItem(item))} className='increase'>-</button>
+                                                        <span className='px-3'>{item.qty}</span>
+                                                        <button className='increase' onClick={()=>dispatch(increaseItem(item))} >+</button>
+                                                    </span>
+                                                </td>
+                                                <td className="text-nowrap text_color">{item.price} AED</td>
+                                                <td className="text-nowrap text_color">{item.price  * item.qty} AED</td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
+                            </div>
+                            <form className="text-center" onSubmit={handleSubmit}>
+                                <div className="input-group col-sm-6 my-3">
+                                    <span className="input-group-text rounded-0 " id="basic-addon1">
+                                        <img src={ae} height="30" alt=""/>
+                                    </span>
+                                    <input type="text" 
+                                    onChange={handleChange}
+                                    className="form-control rounded-0 fs-5" 
+                                    maxLength='9'
+                                    placeholder="5 --------"/>
+                                </div>
+                                <div className="row px-2">
+                                    <button disabled={!valid_number} className="btn btn-lg rounded-0 btn-success bg">Validate Me</button>
+                                    {/* <Link className="btn btn-lg rounded-0 btn-success" to='/otp'>validate me</Link> */}
+                                </div>
+                            </form> 
                         </div>
-                    </form>
-                </div>
+                    }
+                </div>           
                 <div className="col-sm-12 col-md-0 col-lg-3"></div>
             </div>
         </div>
