@@ -31,7 +31,9 @@ function Menu(){
                         ))}
                         <li className='mx-2 px-2 py-0 menu-links'>
                             <Link className="nav-link text-white title-fonts" to='/order'>
-                                <span className='tot-number text-center text-white bg-success'> {Orders.length }</span>
+                                {Orders.length > 0 ? 
+                                <span className='tot-number text-center text-white bg-warning'> {Orders.length }</span>
+                                : "" }
                                 <h2><i className="bi bi-basket"> </i> </h2> 
                             </Link>
                         </li>

@@ -75,34 +75,34 @@ function Order(props){
                             <p className="fs-4">You do not have item in your basket.</p>
                             <Link className="btn btn-primary" to='/menu'>Go to Menu</Link>
                         </div>
-                    :
+                        :
                         <div>
                             <div className="overflow-auto container" >
                                 <table className="table">
                                     <thead className="">
                                         <tr className="text-center">
-                                            <th className="text-nowrap text-danger">X</th>
-                                            <th className="text-nowrap text_color">Item(s)</th>
-                                            <th className="text-nowrap text_color">Quantity</th>
-                                            <th className="text-nowrap text_color">Unite Price</th>
-                                            <th className="text-nowrap text_color">Total</th>
+                                            <th className="text-nowrap ">Remove</th>
+                                            <th className="text-nowrap ">Item(s)</th>
+                                            <th className="text-nowrap ">Quantity</th>
+                                            <th className="text-nowrap ">Unite Price</th>
+                                            <th className="text-nowrap ">Total</th>
                                         </tr>
                                     </thead>
                                     
                                     <tbody className="align-middle">
                                         {Orders.map((item)=> (
                                             <tr key={item.id} className=""> 
-                                                <td className="text-nowrap"><i onClick={()=> dispatch(removeItem(item))} className="bi-trash3 h4 text-danger"></i> </td>
-                                                <td className="text-nowrap text_color">{item.name}</td>
+                                                <td className="text-nowrap"><i onClick={()=> dispatch(removeItem(item))} className="bi-trash3 h4 fw-bold" role='button'></i> </td>
+                                                <td className="text-nowrap ">{item.name}</td>
                                                 <td className="text-nowrap">
-                                                    <span className='btn bg text-nowrap text-white rounded-0 p-0'>
-                                                        <button onClick={()=>dispatch(decreaseItem(item))} className='increase'>-</button>
+                                                    <span className='btn btn-outline-success rounded-pill text-nowrap p-0'>
+                                                        <button onClick={()=>dispatch(decreaseItem(item))} className='btn btn-warning rounded-pill px-3 '> - </button>
                                                         <span className='px-3'>{item.qty}</span>
-                                                        <button className='increase' onClick={()=>dispatch(increaseItem(item))} >+</button>
+                                                        <button className='btn btn-warning rounded-pill px-3' onClick={()=>dispatch(increaseItem(item))} >+</button>
                                                     </span>
                                                 </td>
-                                                <td className="text-nowrap text_color">{item.price} AED</td>
-                                                <td className="text-nowrap text_color">{item.price  * item.qty} AED</td>
+                                                <td className="text-nowrap ">{item.price} AED</td>
+                                                <td className="text-nowrap ">{item.price  * item.qty} AED</td>
                                             </tr>
                                         ))}
                                     </tbody>
@@ -110,18 +110,18 @@ function Order(props){
                             </div>
                             <form className="text-center" onSubmit={handleSubmit}>
                                 <div className="input-group col-sm-6 my-3">
-                                    <span className="input-group-text rounded-0 " id="basic-addon1">
+                                    <span className="input-group-text" id="basic-addon1">
                                         <img src={ae} height="30" alt=""/>
                                     </span>
                                     <input type="text" 
                                     onChange={handleChange}
-                                    className="form-control rounded-0 fs-5" 
+                                    className="form-control fs-5" 
                                     maxLength='9'
                                     placeholder="5 --------"/>
                                 </div>
+                                
                                 <div className="row px-2">
-                                    <button disabled={!valid_number} className="btn btn-lg rounded-0 btn-success bg">Validate Me</button>
-                                    {/* <Link className="btn btn-lg rounded-0 btn-success" to='/otp'>validate me</Link> */}
+                                    <button disabled={!valid_number} className="btn btn-lg btn-primary">Validate Me</button>
                                 </div>
                             </form> 
                         </div>

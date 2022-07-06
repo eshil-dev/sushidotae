@@ -23,6 +23,8 @@ import MakeYourSushi from './components/Make-your-sushi';
 import ThankYou from './components/thank-you';
 import MapTest from './components/testMap';
 
+import Login from './components/Login';
+
 import { Route, Routes } from "react-router-dom";
 // import { lazy } from "react";
 // import ProtectedRoute from './ProtectedRoute';
@@ -63,6 +65,7 @@ function App() {
         <Route path='/locate-me' element={<><Header/><Location/> <Footer/> </>}></Route>
         <Route path='/order-summary' element={<><Header/><OrderSummary/> <Footer/> </>}></Route>
         <Route path='/thank-you' element={<> <Header/><ThankYou/><Footer/> </>}></Route>
+        <Route path='/login' element={<> <Header/><Login/><Footer/> </>}></Route>
         <Route path='*' element={< PageNotFound/>}/>
       </Route>
     </Routes>

@@ -41,13 +41,12 @@ export default function OTP(){
         }
     }
 
-
     return (
         <div className="container py-4">
             <div className="row mt-4">
                 <div className="col-sm-12 col-md-3"></div>
                 <div className="col-sm-12 col-md-6 text-center">
-                    <h1>Enter Your OTP</h1>
+                    <h1 className="text_color">Enter Your OTP</h1>
                     <img src={otp} alt="Sushi.ae" height="200"/>
                     <div className="coontainer">
                         <div className="row">
@@ -55,11 +54,11 @@ export default function OTP(){
                                 <form className="text-center" onSubmit={handleSubmit}>
                                     <p className="my-3">Enter the OTP sent to <span> 0{ordering.phone_number}</span></p>
                                     <div className="input-group mt-3">
-                                        <input type="text" maxLength='4' onChange={handleChange} className="form-control rounded-0"/>
+                                        <input type="text" maxLength='4' onChange={handleChange} className="form-control"/>
                                     </div>  
                                     {/* <span className="">did not get the code? &nbsp;</span> */}
                                     <div className="row px-2">
-                                        <input type="submit" className="mt-3 btn btn-lg bg rounded-0 btn-success"/>
+                                        <input type="submit" className="mt-3 btn btn-lg btn-success"/>
                                     </div>
                                 </form>
                             </div>
