@@ -68,12 +68,32 @@ function OrderSummary(){
             })
             .catch(error => {console.log(error)});        
     }
+
+    const handleNETWORK =()=>{
+        // console.log("getting the access token...", process.env.REACT_APP_NETWORK_API_KEY)
+        const access_token_url = `https://api-gateway.sandbox.ngenius-payments.com/identity/auth/access-token`
+        const headers = {
+            'Content-Type': 'application/vnd.ni-identity.v1+json',
+            "Access-Control-Allow-Origin": true,
+            // 'withCredentials': false,
+            'Authorization': `Basic ${process.env.REACT_APP_NETWORK_API_KEY}`
+        }
+
+        console.log(headers)
+        axios.post(access_token_url, { headers: headers })
+            .then(response => {
+                // check if the status is 200 and statusText is OK
+               console.log("res: ", response)
+            })
+            .catch(error => {console.log(error)});        
+        }
+
     return (
         <div className="container p-3 py-4">
             <div className="container">
                 <div className="row mt-4 ">
-                    <div className="col-sm-12 col-md-3"></div>
-                    <div className="col-sm-12 col-md-6 text-center">
+                    <div className="col-sm-12 col-md-3 "></div>
+                    <div className="col-sm-12 col-md-6  text-center">
                     <h1>Order Summary</h1>
                      {Orders.map((item) => (
                         <div key={item.id} className="row border  border-success rounded-2 p-2 my-2">
@@ -109,7 +129,7 @@ function OrderSummary(){
                     </div>
                     <div className="row mt-3">
                         <button href="" onClick={()=>handleOrder('cash')} className="btn btn-success btn-lg m-1">Cash Payment on Delivery</button>
-                        <button href="" onClick={()=>handleOrder('apple')} className="btn btn-success btn-lg m-1">Pay with Apple Pay</button>
+                        <button href="" onClick={handleNETWORK} className="btn btn-success btn-lg m-1">Pay with Apple Pay</button>
                         <button href="" onClick={()=>handleOrder('card')} className="btn btn-success btn-lg m-1">Card Payment on Delivery</button>
                     </div>
                     </div>
@@ -121,3 +141,6 @@ function OrderSummary(){
 }
 
 export default OrderSummary;
+
+
+// https://portal.ngenius-payments.com/
