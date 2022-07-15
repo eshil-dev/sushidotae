@@ -91,7 +91,7 @@ function Order(props){
                                     
                                     <tbody className="align-middle">
                                         {Orders.map((item)=> (
-                                            <tr key={item.id} className=""> 
+                                            <tr key={item._id} className=""> 
                                                 <td className="text-nowrap"><i onClick={()=> dispatch(removeItem(item))} className="bi-trash3 h4 fw-bold" role='button'></i> </td>
                                                 <td className="text-nowrap ">{item.name}</td>
                                                 <td className="text-nowrap">

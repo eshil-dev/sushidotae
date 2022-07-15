@@ -25,11 +25,11 @@ export const cartSlice = createSlice({
     decreaseItem: (state, action) => {
 
       // find the index of the item and decreament the qty
-      const index = state.cart.findIndex(ele => ele.id === action.payload.id);
+      const index = state.cart.findIndex(ele => ele._id === action.payload._id);
       const newItems = [...state.cart];
 
       if(newItems[index].qty === 1){
-        const filteredState = state.cart.filter(i => i.id !== action.payload.id)
+        const filteredState = state.cart.filter(i => i._id !== action.payload._id)
         state.cart = [...filteredState]
       }else{
         newItems[index].qty--;
@@ -41,7 +41,7 @@ export const cartSlice = createSlice({
 
     increaseItem: (state, action) => {
       // find the index of the item and decreament the qty
-      const index = state.cart.findIndex(ele => ele.id === action.payload.id);
+      const index = state.cart.findIndex(ele => ele._id === action.payload._id);
       const newItems = [...state.cart];
       newItems[index].qty++;
       state.cart = [...newItems]
@@ -51,7 +51,7 @@ export const cartSlice = createSlice({
     },
     removeItem: (state,action) =>{
       // get all the items from cart store except this item passed.
-      const filteredState = state.cart.filter(i => i.id !== action.payload.id)
+      const filteredState = state.cart.filter(i => i._id !== action.payload._id)
       state.cart = [...filteredState]
 
       // add to localstorage
